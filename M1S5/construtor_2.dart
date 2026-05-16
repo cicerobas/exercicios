@@ -71,7 +71,7 @@ class Produto {
 
   @override
   String toString() =>
-      "( ID: $id | Nome: $nome | Preço Unitário: $precoUnitario | Quantidade: $quantidade )";
+      "\n\t(ID: $id | Nome: $nome | Preço Unitário: $precoUnitario | Quantidade: $quantidade )";
 }
 
 class Pagamento {
@@ -92,7 +92,7 @@ class Pagamento {
 
   @override
   String toString() =>
-      "( Método: $metodo | Parcelas: $parcelas | Confirmado: ${confirmado ? 'Sim' : 'Não'} )";
+      "Método: $metodo\n\tParcelas: $parcelas\n\tConfirmado: ${confirmado ? 'Sim' : 'Não'}";
 }
 
 class Cliente {
@@ -108,7 +108,7 @@ class Cliente {
       email = map['email'];
 
   @override
-  String toString() => "( ID: $id | Nome: $nome | Email: $email )";
+  String toString() => "ID: $id\n\tNome: $nome\n\tEmail: $email )";
 }
 
 class Pedido {
@@ -140,7 +140,7 @@ class Pedido {
 
   @override
   String toString() {
-    return "\nID: $id\nCriado em: $dataCriacao\nStatus: $status\nCliente: $cliente\nPagamento: $pagamento\nItens: $itens";
+    return "\nID: $id\nCriado em: $dataCriacao\nStatus: $status\nCliente:\n\t$cliente\nPagamento:\n\t$pagamento\nItens: $itens";
   }
 }
 
