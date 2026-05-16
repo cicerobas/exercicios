@@ -63,11 +63,11 @@ class Produto {
     required this.quantidade,
   });
 
-  Produto.fromMap(Map<String, dynamic> map)
-    : id = map['id_produto'],
-      nome = map['nome'],
-      precoUnitario = map['preco_unitario'],
-      quantidade = map['quantidade'];
+  Produto.fromMap(Map<String, dynamic> produtoMap)
+    : id = produtoMap['id_produto'],
+      nome = produtoMap['nome'],
+      precoUnitario = produtoMap['preco_unitario'],
+      quantidade = produtoMap['quantidade'];
 
   @override
   String toString() =>
@@ -85,10 +85,10 @@ class Pagamento {
     required this.confirmado,
   });
 
-  Pagamento.fromMap(Map<String, dynamic> map)
-    : metodo = map['metodo'],
-      parcelas = map['parcelas'],
-      confirmado = map['confirmado'];
+  Pagamento.fromMap(Map<String, dynamic> pagamentoMap)
+    : metodo = pagamentoMap['metodo'],
+      parcelas = pagamentoMap['parcelas'],
+      confirmado = pagamentoMap['confirmado'];
 
   @override
   String toString() =>
@@ -102,10 +102,10 @@ class Cliente {
 
   const Cliente({required this.id, required this.nome, required this.email});
 
-  Cliente.fromMap(Map<String, dynamic> map)
-    : id = map['id_cliente'],
-      nome = map['nome'],
-      email = map['email'];
+  Cliente.fromMap(Map<String, dynamic> clienteMap)
+    : id = clienteMap['id_cliente'],
+      nome = clienteMap['nome'],
+      email = clienteMap['email'];
 
   @override
   String toString() => "ID: $id\n\tNome: $nome\n\tEmail: $email";
@@ -117,7 +117,7 @@ class Pedido {
   final String status;
   final Cliente cliente;
   final Pagamento pagamento;
-  final List<Produto> itens;
+  final List<Produto> itensPedido;
 
   const Pedido({
     required this.id,
@@ -125,22 +125,22 @@ class Pedido {
     required this.status,
     required this.cliente,
     required this.pagamento,
-    required this.itens,
+    required this.itensPedido,
   });
 
-  Pedido.fromMap(Map<String, dynamic> map)
-    : id = map['id_pedido'],
-      dataCriacao = map['data_criacao'],
-      status = map['status'],
-      cliente = Cliente.fromMap(map['cliente']),
-      pagamento = Pagamento.fromMap(map['pagamento']),
-      itens = (map['itens'] as List)
+  Pedido.fromMap(Map<String, dynamic> pedidoMap)
+    : id = pedidoMap['id_pedido'],
+      dataCriacao = pedidoMap['data_criacao'],
+      status = pedidoMap['status'],
+      cliente = Cliente.fromMap(pedidoMap['cliente']),
+      pagamento = Pagamento.fromMap(pedidoMap['pagamento']),
+      itensPedido = (pedidoMap['itens'] as List)
           .map((item) => Produto.fromMap(item as Map<String, dynamic>))
           .toList();
 
   @override
   String toString() {
-    return "\nID: $id\nCriado em: $dataCriacao\nStatus: $status\nCliente:\n\t$cliente\nPagamento:\n\t$pagamento\nItens: $itens";
+    return "\nID: $id\nCriado em: $dataCriacao\nStatus: $status\nCliente:\n\t$cliente\nPagamento:\n\t$pagamento\nItens: $itensPedido";
   }
 }
 
