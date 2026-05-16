@@ -108,7 +108,7 @@ class Cliente {
       email = map['email'];
 
   @override
-  String toString() => "ID: $id\n\tNome: $nome\n\tEmail: $email )";
+  String toString() => "ID: $id\n\tNome: $nome\n\tEmail: $email";
 }
 
 class Pedido {
